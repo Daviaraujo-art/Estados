@@ -1,63 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estados - siglas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estados - Siglas</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('https://upload.wikimedia.org/wikipedia/commons/0/05/Bandeiras_dos_estados_do_Brasil.jpg');
+    background-size:cover;
+    background-position:center;
+}
+
+.container{
+    width:700px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1{
+    color:#0a4f9e;
+    margin-bottom:15px;
+}
+
+p{
+    margin-bottom:10px;
+    color:#333;
+}
+
+select{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border-radius:10px;
+    border:2px solid #0a4f9e;
+    font-size:16px;
+    cursor:pointer;
+}
+
+#resposta_sigla{
+    display:none;
+    text-align:center;
+}
+
+#resposta_sigla h2{
+    color:#0a4f9e;
+    margin-bottom:15px;
+}
+
+#resposta_sigla img{
+    width:180px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    margin-top:10px;
+}
+
+</style>
 </head>
 <body>
-    <h1>Descubra qual é o nome de cada estado do Brasil pela sua sigla !!!</h1>
-    <p>Você tem dificuldade em saber o nome de cada estado pela sigla? Hoje eu estou aqui para te ajudar !!! </p>
-    <P>Escolha uma sigla que irei te apresentar o nome do estado</P>
-    
-    
-    <select id="sigla_estado" onchange="responder_sigla()">
-        <option>Selecione o Estado</option>
-        <option value="Acre">AC</option>
-        <option value="Alagoas">AL</option>
-        <option value="Amapa">AP</option>
-        <option value="Amazonas">AM</option>
-        <option value="Bahia">BA</option>
-        <option value="Ceara">CE</option>
-        <option value="Distrito Federal">DF</option>
-        <option value="Espirito Santo">ES</option>
-        <option value="Goias">GO</option>
-        <option value="Maranhao">MA</option>
-        <option value="Mato Grosso">MT</option>
-        <option value="Mato Grosso do Sul">MS</option>
-        <option value="Minas Gerais">MG</option>
-        <option value="Para">PA</option>
-        <option value="Paraíba">PB</option>
-        <option value="Parana">PR</option>
-        <option value="Pernambuco">PE</option>
-        <option value="Piaui">PI</option>
-        <option value="Rio de Janeiro">RJ</option>
-        <option value="Rio Grande do Norte">RN</option>
-        <option value="Rio Grande do Sul">RS</option>
-        <option value="Rondonia">RO</option>
-        <option value="Roraima">RR</option>
-        <option value="Santa Catarina">SC</option>
-        <option value="Sao Paulo">SP</option>
-        <option value="Sergipe">SE</option>
-        <option value="Tocantins">TO</option>
-    </select>
-    
-    <div id="resposta_sigla"></div>
 
+<div class="container">
 
-    <script>
-        function responder_sigla(){
-            var estado = sigla_estado.value
-            var resposta = `O estado da sigla é ${estado}`
-            
-            renderizar_sigla(resposta)
-        }
-        
-        function renderizar_sigla(texto){
-            document.getElementById('resposta_sigla').innerHTML = texto
-        }
+    <div class="card">
+        <h1>Descubra o Estado pela Sigla 🇧🇷</h1>
 
-    </script>
+        <p>Você tem dificuldade em saber o nome de cada estado pela sigla?</p>
+        <p>Escolha uma sigla que irei apresentar o nome do estado.</p>
+
+        <select id="sigla_estado" onchange="responder_sigla()">
+            <option value="">Selecione o Estado</option>
+
+            <option value="Acre" data-flag="https://upload.wikimedia.org/wikipedia/commons/4/4c/Bandeira_do_Acre.svg">AC</option>
+
+            <option value="Alagoas" data-flag="https://upload.wikimedia.org/wikipedia/commons/8/88/Bandeira_de_Alagoas.svg">AL</option>
+
+            <option value="Amapá" data-flag="https://upload.wikimedia.org/wikipedia/commons/0/0c/Bandeira_do_Amap%C3%A1.svg">AP</option>
+
+            <option value="Amazonas" data-flag="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bandeira_do_Amazonas.svg">AM</option>
+
+            <option value="Bahia" data-flag="https://upload.wikimedia.org/wikipedia/commons/2/28/Bandeira_da_Bahia.svg">BA</option>
+
+            <option value="Ceará" data-flag="https://upload.wikimedia.org/wikipedia/commons/2/2e/Bandeira_do_Cear%C3%A1.svg">CE</option>
+
+            <option value="Distrito Federal" data-flag="https://upload.wikimedia.org/wikipedia/commons/0/04/Bandeira_do_Distrito_Federal_%28Brasil%29.svg">DF</option>
+
+            <option value="Espírito Santo" data-flag="https://upload.wikimedia.org/wikipedia/commons/4/43/Bandeira_do_Esp%C3%ADrito_Santo.svg">ES</option>
+
+            <option value="Goiás" data-flag="https://upload.wikimedia.org/wikipedia/commons/b/be/Flag_of_Goi%C3%A1s.svg">GO</option>
+
+            <option value="Maranhão" data-flag="https://upload.wikimedia.org/wikipedia/commons/4/45/Bandeira_do_Maranh%C3%A3o.svg">MA</option>
+
+            <option value="Mato Grosso" data-flag="https://upload.wikimedia.org/wikipedia/commons/0/0b/Bandeira_de_Mato_Grosso.svg">MT</option>
+
+            <option value="Mato Grosso do Sul" data-flag="https://upload.wikimedia.org/wikipedia/commons/6/64/Bandeira_de_Mato_Grosso_do_Sul.svg">MS</option>
+
+            <option value="Minas Gerais" data-flag="https://upload.wikimedia.org/wikipedia/commons/f/f4/Bandeira_de_Minas_Gerais.svg">MG</option>
+
+            <option value="Pará" data-flag="https://upload.wikimedia.org/wikipedia/commons/0/02/Bandeira_do_Par%C3%A1.svg">PA</option>
+
+            <option value="Paraíba" data-flag="https://upload.wikimedia.org/wikipedia/commons/b/bb/Bandeira_da_Para%C3%ADba.svg">PB</option>
+
+            <option value="Paraná" data-flag="https://upload.wikimedia.org/wikipedia/commons/9/93/Bandeira_do_Paran%C3%A1.svg">PR</option>
+
+            <option value="Pernambuco" data-flag="https://upload.wikimedia.org/wikipedia/commons/5/59/Bandeira_de_Pernambuco.svg">PE</option>
+
+            <option value="Piauí" data-flag="https://upload.wikimedia.org/wikipedia/commons/3/33/Bandeira_do_Piau%C3%AD.svg">PI</option>
+
+            <option value="Rio de Janeiro" data-flag="https://upload.wikimedia.org/wikipedia/commons/7/73/Bandeira_do_estado_do_Rio_de_Janeiro.svg">RJ</option>
+
+            <option value="Rio Grande do Norte" data-flag="https://upload.wikimedia.org/wikipedia/commons/3/30/Bandeira_do_Rio_Grande_do_Norte.svg">RN</option>
+
+            <option value="Rio Grande do Sul" data-flag="https://upload.wikimedia.org/wikipedia/commons/6/63/Bandeira_do_Rio_Grande_do_Sul.svg">RS</option>
+
+            <option value="Rondônia" data-flag="https://upload.wikimedia.org/wikipedia/commons/f/fa/Bandeira_de_Rond%C3%B4nia.svg">RO</option>
+
+            <option value="Roraima" data-flag="https://upload.wikimedia.org/wikipedia/commons/9/98/Bandeira_de_Roraima.svg">RR</option>
+
+            <option value="Santa Catarina" data-flag="https://upload.wikimedia.org/wikipedia/commons/1/1a/Bandeira_de_Santa_Catarina.svg">SC</option>
+
+            <option value="São Paulo" data-flag="https://upload.wikimedia.org/wikipedia/commons/4/4c/Bandeira_do_estado_de_S%C3%A3o_Paulo.svg">SP</option>
+
+            <option value="Sergipe" data-flag="https://upload.wikimedia.org/wikipedia/commons/b/be/Bandeira_de_Sergipe.svg">SE</option>
+
+            <option value="Tocantins" data-flag="https://upload.wikimedia.org/wikipedia/commons/f/ff/Bandeira_do_Tocantins.svg">TO</option>
+        </select>
+    </div>
+
+    <div id="resposta_sigla" class="card"></div>
+
+</div>
+
+<script>
+
+function responder_sigla(){
+
+    const select = document.getElementById('sigla_estado');
+    const estado = select.value;
+    const bandeira = select.options[select.selectedIndex].dataset.flag;
+    const resposta = document.getElementById('resposta_sigla');
+
+    if(!estado){
+        resposta.style.display='none';
+        return;
+    }
+
+    resposta.style.display='block';
+    resposta.innerHTML = `
+        <h2>Estado selecionado</h2>
+        <p>O estado da sigla é <strong>${estado}</strong></p>
+        <img src="${bandeira}" alt="Bandeira ${estado}">
+    `;
+}
+
+</script>
+
 </body>
 </html>
