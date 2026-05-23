@@ -1,7 +1,14 @@
 body{
-    background-image: url('./img/background-brasil.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+    url('./img/background-brasil.png');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
